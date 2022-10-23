@@ -1,0 +1,8 @@
+@forward "resets" as reset-*;
+@forward "colors" as color-*;
+
+@mixin fa-icon-common-props {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased; 
+}

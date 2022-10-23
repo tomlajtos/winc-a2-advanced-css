@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+/*****************
+ * global styles *
+ *****************/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000000;
+  background-color: #c3cfe2;
+}
+
+.page-container {
+  min-width: 400px;
+  min-height: 100vh;
+}
+
+h1,
+main > h2 {
+  grid-area: content;
+  text-align: center;
+  margin: 50px 0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/***************************
+ * testimonial card styles *
+ ***************************/
+.testimonial {
+  margin: 0 auto;
+  width: 400px;
+  height: 500px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 1fr;
+  border-radius: 25px;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.25);
+  /* testimonial text styles, top 2/3 of the testimonial element*/
+  /* testimonial image styles, :horizontally centered, covering equal areas of bot &__text and &__footer */
+  /* testimonial footer styles, bottom 1/3 of the testimonial element*/
+}
+.testimonial__text {
+  grid-area: 1/1/5/2;
+  padding: 11% 10%;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 3.6rem;
+  border-radius: 25px 25px 0 0;
+}
+.testimonial__img {
+  margin: 7% auto;
+  width: 27%;
+  grid-area: 4/1/6/2;
+  box-shadow: 0px 0px 0px 5px #ffffff; /* used box-shadow to make the image border, because the simple white border was generating a weird issue upon zooming, where the background of the footer became visible. Issue persisted regardless of box-sizing settings */
+  border-radius: 50%;
+}
+.testimonial__footer {
+  width: 100%;
+  grid-area: 5/1/7/2;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  background-color: #686de0;
+  border-radius: 0 0 25px 25px;
+}
+.testimonial__footer__name {
+  padding-top: 20px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.testimonial__footer__link {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/***************************
+ *  portfolio-grid styles  *
+ ***************************/
+.portfolio-grid {
+  width: min-content;
+  margin: 0 auto;
+  max-width: 1024px;
+  display: grid;
+  grid: 1fr/1fr;
+  gap: 30px 20px;
+}
+.portfolio-grid__wrapper {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  /* .testimonial styles within .portfolio-grid 
+   replaced by .button-container upon hover */
+  /* .button-container styles within .portfolio-grid 
+   replaces .testimonial upon hover -- opacity transition */
+}
+.portfolio-grid__wrapper .testimonial {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.portfolio-grid__wrapper__button-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #252b3e;
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
+}
+.portfolio-grid__wrapper__button-container button {
+  margin: 55% auto;
+  padding: 1rem;
+  width: 40%;
+  display: block;
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+.portfolio-grid__wrapper__button-container:hover {
+  opacity: 1;
+}
+
+/*****************************************
+ *  social media side-navigation styles  *
+ *****************************************/
+.social-container {
+  width: 100%;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  overflow-x: hidden;
+}
+
+/* styles for vertical animated navigation menu positioned to the left side of the page */
+/* navigation items slide out to the left upon hover -- transform (translateX()) transition */
+.social-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* specific settings for individual nav-links and their icons */
+  /* blog */
+  /* twitter */
+  /* linkedin */
+  /* facebook */
+  /* github */
+}
+.social-nav__list__item {
+  margin-right: -188px;
+  padding: 0 2rem 0 1.5rem;
+  text-align: left;
+  transition: 400ms ease-in-out 100ms transform;
+  /* general settings for font-awesome icons as pseudo-elements of social-nav links  */
+}
+.social-nav__list__item .link,
+.social-nav__list__item .link:hover,
+.social-nav__list__item .link:focus,
+.social-nav__list__item .link:active {
+  align-items: center;
+  font-size: 1.5rem;
+  line-height: 4.2rem;
+  text-decoration: underline;
+  color: #ffffff;
+}
+.social-nav__list__item .link::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 2.5rem;
+  vertical-align: text-bottom;
+}
+.social-nav__list__item:hover {
+  transform: translateX(-188px);
+}
+.social-nav__list__item:nth-child(1) {
+  background-color: #e17b77;
+}
+.social-nav__list__item:nth-child(1) .link::before {
+  margin-left: -0.3rem;
+  font: var(--fa-font-solid);
+  content: "\f5fc";
+  font-size: 1.4em;
+}
+.social-nav__list__item:nth-child(2) {
+  background-color: #00aced;
+}
+.social-nav__list__item:nth-child(2) .link::before {
+  font: var(--fa-font-brands);
+  content: "\f099";
+  font-size: 1.4em;
+}
+.social-nav__list__item:nth-child(3) {
+  background-color: #007bb6;
+}
+.social-nav__list__item:nth-child(3) .link::before {
+  font: var(--fa-font-brands);
+  content: "\f0e1";
+  font-size: 1.4em;
+}
+.social-nav__list__item:nth-child(4) {
+  background-color: #3b5998;
+}
+.social-nav__list__item:nth-child(4) .link::before {
+  margin-left: 0.2rem;
+  font: var(--fa-font-brands);
+  content: "\f39e";
+  font-size: 1.4em;
+}
+.social-nav__list__item:nth-child(5) {
+  background-color: #333;
+}
+.social-nav__list__item:nth-child(5) .link::before {
+  font: var(--fa-font-brands);
+  content: "\f09b";
+  font-size: 1.4em;
+}
+
+/*******************************************
+ * @media rules for portfolio-grid styles  *
+ *******************************************/
+/* different fixed grid element sizes for different screen width values were used 
+ * ------------------------------------------------------------------------------
+ * making the testimonial element's text responsive did not result
+ * in a consistent enough design (not even using vw units for font size) 
+ * when multiple fixed sized versions are displayed on the same page 
+ * i.e. part 1 lager testimonial and .portfolio-grid items on wider screens*/
+@media screen and (min-width: 768px) {
+  .portfolio-grid {
+    grid: 1fr/1fr 1fr;
+  }
+  .portfolio-grid__wrapper {
+    width: 350px;
+    height: 438px;
+  }
+  .portfolio-grid__wrapper .testimonial__text {
+    font-size: 1.6rem;
+    line-height: 3rem;
+  }
+  .portfolio-grid__wrapper .testimonial__img {
+    margin: 7% auto;
+    width: 27%;
+  }
+  .portfolio-grid__wrapper .testimonial__footer__name {
+    padding-top: 20px;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+  .portfolio-grid__wrapper .testimonial__footer__link {
+    padding-top: 5px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .portfolio-grid {
+    grid: 1fr/repeat(3, 1fr);
+  }
+  .portfolio-grid__wrapper {
+    width: 320px;
+    height: 400px;
+  }
+  .portfolio-grid__wrapper .testimonial__text {
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+  }
+  .portfolio-grid__wrapper .testimonial__img {
+    margin: 7% auto;
+    width: 27%;
+  }
+  .portfolio-grid__wrapper .testimonial__footer__name {
+    padding-top: 23px;
+    font-size: 1.7rem;
+    letter-spacing: 0.1em;
+  }
+  .portfolio-grid__wrapper .testimonial__footer__link {
+    padding-top: 5px;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
