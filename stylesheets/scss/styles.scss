@@ -28,7 +28,6 @@ body {
 
 h1,
 main > h2 {
-  grid-area: content;
   text-align: center;
   margin: 50px 0;
 }
@@ -43,11 +42,15 @@ a:active {
 /***************************
  * testimonial card styles *
  ***************************/
+.testimonial-container {
+  width: 100%;
+  padding: 0 10px;
+}
 
 .testimonial {
   margin: 0 auto;
-  width: 400px;
-  height: 500px;
+  width: 380px;
+  height: 490px;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   grid-template-columns: 1fr;
@@ -62,13 +65,13 @@ a:active {
     color: rgba(const.$color-black, 0.7);
     font-size: 1.8rem;
     font-weight: 500;
-    line-height: 3.6rem;
+    line-height: 3.5rem;
     border-radius: 25px 25px 0 0;
   }
 
   /* testimonial image styles, :horizontally centered, covering equal areas of bot &__text and &__footer */
   &__img {
-    margin: 7% auto;
+    margin: 7.5% auto;
     width: 27%;
     grid-area: 4 / 1 / 6 / 2;
     box-shadow: 0px 0px 0px 5px const.$color-white; /* used box-shadow to make the image border, because the simple white border was generating a weird issue upon zooming, where the background of the footer became visible. Issue persisted regardless of box-sizing settings */
@@ -96,7 +99,6 @@ a:active {
     }
 
     &__link {
-      // @include const.reset-link;
       text-align: center;
       font-size: 1.6rem;
       font-weight: 600;
@@ -112,14 +114,15 @@ a:active {
 .portfolio-grid {
   width: min-content;
   margin: 0 auto;
+  padding: 0 10px;
   max-width: 1024px;
   display: grid;
   grid: 1fr / 1fr;
   gap: 30px 20px;
 
   &__wrapper {
-    width: 400px;
-    height: 500px;
+    width: 380px;
+    height: 490px;
     position: relative;
 
     /* .testimonial styles within .portfolio-grid 
@@ -208,6 +211,7 @@ a:active {
         vertical-align: text-bottom;
       }
     }
+
     &__item:hover {
       transform: translateX(-188px);
     }
